@@ -148,16 +148,15 @@ plt.xlabel('Epoch')
 plt.legend()
 plt.show()
 
-# 🔹 Take user input
+
 user_input = input("Enter your email text: ")
 
-# 🔹 Preprocess the input using the same tokenizer and padding
+
 user_sequence = tokenizer.texts_to_sequences([user_input])
 user_padded = pad_sequences(user_sequence, maxlen=max_len, padding='post')
 
-# 🔹 Predict using the trained model
 prediction = model.predict(user_padded)
 
-# 🔹 Output result
+
 label = "Spam" if prediction[0][0] > 0.5 else "Not Spam"
 print(f"\nPrediction: {label} (Confidence: {prediction[0][0]:.2f})")
